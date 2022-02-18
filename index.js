@@ -6,6 +6,7 @@ const app = express();
 //Global vars
 global.id = 0;
 global.meetings = [false,false,false,false];
+global.players = {};
 
 app.enable('trust-proxy');
 
@@ -31,11 +32,13 @@ app.use(express.json());
 
 app.listen(3000)
 
-
-app.get('/Player', function(req,res) {
-
+app.get('/update', function(req,res) {
     if (session.username == null) {
         session.username = req.query.username;
+    }
+
+    if (session.game == null) {
+        session.game = req.query.game;
     }
 
     if (session.id == null) {
@@ -43,6 +46,12 @@ app.get('/Player', function(req,res) {
         session.id = id;
     }
 
+    res.setHeader('Content-Type', 'text/plain');
+    res.write('RECEIVED');
+    res.end();
+})
+
+app.get('/player', function(req,res) {
     //Player json response obj
     const player = {
 
