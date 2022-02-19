@@ -206,17 +206,3 @@ app.get('/check', function(req,res) {
         //Redirect to chat
     }
 })
-
-app.get('/chatroom', function(req,res) {
-    check = chatrooms.findIndex(e => e.meetingid == req.query.meetingid);
-
-    if (check == -1) {
-        const new_room = {};
-
-        new_room.meetingid = req.query.meetingid;
-        
-
-    } else {
-
-    }
-})
