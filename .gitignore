@@ -9,7 +9,7 @@
 /Unity/[Bb]uilds/
 /Unity/[Ll]ogs/
 /Unity/[Mm]emoryCaptures/
-/node_modules/
+/node_modules/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/Unity/[Aa]ssets/**/*.meta
