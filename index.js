@@ -205,4 +205,7 @@ app.get('/check', function(req,res) {
 
         //Redirect to chat
     }
+    
+    res.write('Checking');
+    res.end();
 })
