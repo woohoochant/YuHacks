@@ -1,7 +1,9 @@
 const http = require('http');
 const express = require('express');
 const session = require('express-session');
+const path = require('path');
 const app = express();
+
 
 //Global vars
 global.id = 0;
@@ -9,7 +11,7 @@ global.meetings = [false,false,false,false];
 global.players = [];
 
 app.enable('trust-proxy');
-
+app.use(express.static(__dirname));
 //Use the session middleware
 app.use(session({
     name: 'YUhack',
@@ -31,6 +33,20 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.listen(3000)
+
+//index
+app.get('/', function(req, res){
+    res.setHeader('Content-Type', 'text/html');
+    res.statusCode = 200;
+    res.sendFile('index.html', { root: path.join(__dirname, '') });
+});
+
+//games
+app.get('/games', function(req, res){
+    res.setHeader('Content-Type', 'text/html');
+    res.statusCode = 200;
+    res.sendFile('new_categories.html', { root: path.join(__dirname, '') });
+});
 
 app.get('/update', function(req,res) {
     if (session.username == null) {
@@ -59,8 +75,7 @@ app.get('/update', function(req,res) {
         //DNE
     }
 
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('RECEIVED');
+    res.redirect(req.baseUrl+'/games');
     res.end();
 });
 
