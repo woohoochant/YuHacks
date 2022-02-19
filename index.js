@@ -174,6 +174,7 @@ app.get('/search', function(req,res) {
                     meeting[j] = true;
                     session.meetingid = j;
                     players[self].meetingid = j;
+                    players[check].meetingid = j;
 
                     const new_chat = {};
 
@@ -184,7 +185,6 @@ app.get('/search', function(req,res) {
                     chatrooms.push(new_chat);
 
                 }
-                players[check].meetingid = j;
             }
         }
     }
