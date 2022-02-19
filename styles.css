@@ -41,10 +41,25 @@ body {
   background: #ececec;
   color: #111;
   word-wrap: normal;
-  margin-top: 300px;
+  margin-top: 320px;
 }
+
+.welcome-to {
+  text-align: center;
+  position: absolute;
+  margin-top: -20%;
+}
+
+.gamerchat {
+  font-size: 39px;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  margin-top: -18.5%;
+}
+
 h1 {
-  font-size: 30px;
+  font-size: 27px;
   padding-bottom: 18px;
 }
 p {
@@ -61,6 +76,7 @@ p {
   animation-fill-mode: forwards;
   margin-top: 300px;
 }
+
 a {
   color: #e74c3c;
   text-decoration: none;
