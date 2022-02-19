@@ -216,18 +216,7 @@ app.get('/check', function(req,res) {
         res.write(JSON.stringify(players[check].id));
         res.end();
     }
-})
-
-app.get('/chatroom', function(req,res) {
-    check = chatrooms.findIndex(e => e.meetingid == req.query.meetingid);
-
-    if (check == -1) {
-        const new_room = {};
-
-        new_room.meetingid = req.query.meetingid;
-        
-
-    } else {
-
-    }
+    
+    res.write('Checking');
+    res.end();
 })

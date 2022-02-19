@@ -4,16 +4,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script defer src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="chatroom_styles.css">
+  <title>Chat Room</title>
+  <script defer src="http://localhost:8080/socket.io/socket.io.js%22%3E</script>
   <script defer src="script.js"></script>
 </head>
     <body>
-        <div id="chat-room">
-            <h1>CHAT ROOM</h1>
+        <div class="chat" id="chat-room">
+            <p class="welcome-to">Welcome to the</p>
+            <h1>Chat Room</h1>
+            <p>You are talking to <span class="connected-user">NAME</span></p>
+            <div class="chat-border">
             <div id="messages">
             </div>
-            <form id="message-form">
+            <form class="type-box" id="message-form">
                 <input type="text" id="message">
                 <button type="submit" id="send">Send</button>
             </form>
