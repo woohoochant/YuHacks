@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637808139084385708
-    m_Hash: 4007186375
+      ticks: 637808239060612740
+    m_Hash: 488874172
   m_LockFileStatus:
     m_FilePath: C:/Users/wooho/Documents/GitHub/YuHacks/Unity/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637808169145614023
-    m_Hash: 38571225
+      ticks: 637808239066712178
+    m_Hash: 1432022633
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -425,6 +425,196 @@ m_PackageAssets:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.vscode.git
         revision: b5ec9b38109e52b1b26597d521e4df75e042ebb9
+        path: 
+    - packageId: com.unity.inputsystem@1.0.2
+      testable: 0
+      isDirectDependency: 1
+      version: 1.0.2
+      source: 1
+      resolvedPath: C:\Users\wooho\Documents\GitHub\YuHacks\Unity\Library\PackageCache\com.unity.inputsystem@1.0.2
+      assetPath: Packages/com.unity.inputsystem
+      name: com.unity.inputsystem
+      displayName: Input System
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: A new input system which can be used as a more extensible and
+        customizable alternative to Unity's classic input system in UnityEngine.Input.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.1.2-preview
+        - 0.2.0-preview
+        - 0.2.1-preview
+        - 0.2.6-preview
+        - 0.2.8-preview
+        - 0.2.10-preview
+        - 0.9.0-preview
+        - 0.9.1-preview
+        - 0.9.2-preview
+        - 0.9.3-preview
+        - 0.9.4-preview
+        - 0.9.5-preview
+        - 0.9.6-preview
+        - 1.0.0-preview
+        - 1.0.0-preview.1
+        - 1.0.0-preview.2
+        - 1.0.0-preview.3
+        - 1.0.0-preview.4
+        - 1.0.0-preview.5
+        - 1.0.0-preview.6
+        - 1.0.0-preview.7
+        - 1.0.0
+        - 1.0.1
+        - 1.0.2
+        - 1.1.0-pre.5
+        - 1.1.0-pre.6
+        - 1.1.0-preview.1
+        - 1.1.0-preview.2
+        - 1.1.0-preview.3
+        - 1.1.1
+        - 1.2.0
+        - 1.3.0
+        compatible:
+        - 0.1.2-preview
+        - 0.2.0-preview
+        - 0.2.1-preview
+        - 0.2.6-preview
+        - 0.2.8-preview
+        - 0.2.10-preview
+        - 0.9.0-preview
+        - 0.9.1-preview
+        - 0.9.2-preview
+        - 0.9.3-preview
+        - 0.9.4-preview
+        - 0.9.5-preview
+        - 0.9.6-preview
+        - 1.0.0-preview
+        - 1.0.0-preview.1
+        - 1.0.0-preview.2
+        - 1.0.0-preview.3
+        - 1.0.0-preview.4
+        - 1.0.0-preview.5
+        - 1.0.0-preview.6
+        - 1.0.0-preview.7
+        - 1.0.0
+        - 1.0.1
+        - 1.0.2
+        - 1.1.0-pre.5
+        - 1.1.0-pre.6
+        - 1.1.0-preview.1
+        - 1.1.0-preview.2
+        - 1.1.0-preview.3
+        - 1.1.1
+        - 1.2.0
+        - 1.3.0
+        verified: 1.0.2
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - input
+      - events
+      - keyboard
+      - mouse
+      - gamepad
+      - touch
+      - vr
+      - xr
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637468486210000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/InputSystem.git
+        revision: 041def76515febb36a83d1f928cfb7aefb85176c
+        path: 
+    - packageId: com.unity.multiplayer-hlapi@1.1.1
+      testable: 0
+      isDirectDependency: 1
+      version: 1.1.1
+      source: 1
+      resolvedPath: C:\Users\wooho\Documents\GitHub\YuHacks\Unity\Library\PackageCache\com.unity.multiplayer-hlapi@1.1.1
+      assetPath: Packages/com.unity.multiplayer-hlapi
+      name: com.unity.multiplayer-hlapi
+      displayName: Multiplayer HLAPI
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: The high level API component of the Unity Multiplayer system.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.2.4-preview
+        - 0.2.5-preview
+        - 1.0.0
+        - 1.0.1
+        - 1.0.2
+        - 1.0.4
+        - 1.0.6
+        - 1.0.8
+        - 1.1.1
+        compatible:
+        - 0.2.4-preview
+        - 0.2.5-preview
+        - 1.0.0
+        - 1.0.1
+        - 1.0.2
+        - 1.0.4
+        - 1.0.6
+        - 1.0.8
+        - 1.1.1
+        verified: 
+      dependencies:
+      - name: com.unity.nuget.mono-cecil
+        version: 1.10.1
+      resolvedDependencies:
+      - name: com.unity.nuget.mono-cecil
+        version: 1.10.1
+      keywords:
+      - multiplayer
+      - networking
+      - hlapi
+      - high-level
+      - api
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637560226460000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.multiplayer-hlapi.git
+        revision: bab548572ce9bd49e42fa76ed4edd1972be375c9
         path: 
     - packageId: com.unity.test-framework@1.1.22
       testable: 0
@@ -2692,6 +2882,7 @@ m_PackageAssets:
         - 1.0.0
         - 1.0.5
         - 1.0.6
+        - 2.0.2
         compatible:
         - 0.1.5-preview
         - 0.1.6-preview
@@ -2699,6 +2890,7 @@ m_PackageAssets:
         - 1.0.0
         - 1.0.5
         - 1.0.6
+        - 2.0.2
         verified: 1.0.6
       dependencies: []
       resolvedDependencies: []
@@ -2725,6 +2917,71 @@ m_PackageAssets:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
         revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
+        path: 
+    - packageId: com.unity.nuget.mono-cecil@1.10.1
+      testable: 0
+      isDirectDependency: 0
+      version: 1.10.1
+      source: 1
+      resolvedPath: C:\Users\wooho\Documents\GitHub\YuHacks\Unity\Library\PackageCache\com.unity.nuget.mono-cecil@1.10.1
+      assetPath: Packages/com.unity.nuget.mono-cecil
+      name: com.unity.nuget.mono-cecil
+      displayName: Mono Cecil
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: 'The mono cecil library from https://www.nuget.org/packages/Mono.Cecil/
+
+
+        This
+        package is intended for internal Unity use only. Most Unity users will be
+        better suite using the existing community tooling.
+
+        To avoid assembly
+        clashes, please use this package if you intend to use Mono.Cecil.'
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.1.6-preview.2
+        - 1.0.0-preview.1
+        - 1.10.0-preview.1
+        - 1.10.1-preview.1
+        - 1.10.1
+        - 1.10.2
+        compatible:
+        - 0.1.6-preview.2
+        - 1.0.0-preview.1
+        - 1.10.0-preview.1
+        - 1.10.1-preview.1
+        - 1.10.1
+        - 1.10.2
+        verified: 
+      dependencies: []
+      resolvedDependencies: []
+      keywords: []
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637437477070000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.mono-cecil.git
+        revision: c1b254abc76d079830441168142797a454b48735
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
