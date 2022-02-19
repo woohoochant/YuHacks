@@ -126,7 +126,7 @@ app.get('/search', function(req,res) {
         }
     }
 
-    res.write('Dog');
+    res.write('Searched');
     res.end();
 });
 
