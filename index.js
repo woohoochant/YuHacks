@@ -64,7 +64,7 @@ app.get('/update', function(req,res) {
     res.end();
 });
 
-app.get('/everyone', function(req,res) {
+app.get('/playerlist', function(req,res) {
     res.setHeader('Content-Type', 'application/json');
     res.write(JSON.stringify(players));
     res.end();
