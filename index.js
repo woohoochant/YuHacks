@@ -6,7 +6,7 @@ const app = express();
 //Global vars
 global.id = 0;
 global.meetings = [false,false,false,false];
-global.players = {};
+global.players = [];
 
 app.enable('trust-proxy');
 
@@ -46,8 +46,27 @@ app.get('/update', function(req,res) {
         session.id = id;
     }
 
+    const check = players.find(e => e.id == session.id);
+    if (!check) {
+        //Player json response obj
+        const player = {};
+        player.id = session.id;
+        player.username = session.username;
+        player.game = session.game;
+        player.meetingid = session.meetingid;
+        players.push(player);
+    } else {
+        //DNE
+    }
+
     res.setHeader('Content-Type', 'text/plain');
     res.write('RECEIVED');
+    res.end();
+});
+
+app.get('/everyone', function(req,res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify(players));
     res.end();
 })
 
@@ -64,4 +83,4 @@ app.get('/player', function(req,res) {
     res.setHeader('Content-Type', 'application/json');
     res.write(JSON.stringify(player));
     res.end();
-})
+});
