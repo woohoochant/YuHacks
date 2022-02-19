@@ -1,36 +1,42 @@
 * {
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background-color: rgb(48, 48, 48);
+  color: white;
+}
+
+.main {
+  margin: 150px;
+  display: flex;
+  align-items: center;
 }
 
 .column {
   float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 18.9%;
-  top: 50%;
+  width: 20%;
   padding: 5px;
-  background-image: url(https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=);
-  border-radius: 25px;
+  align-items: center;
 }
 
 /* Clearfix (clear floats) */
 .row::after {
   content: "";
+  align-items: center;
   clear: both;
   display: table;
 }
 
 P {
+  margin-top: 0%;
   text-align: center;
-  color: black;
 }
 
 h1 {
   text-align: center;
-  color: aliceblue;
+  margin-bottom: 9px;
 }
 
-body {
-  background-color: black;
+.column:hover {
+  transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.14);
 }
-
