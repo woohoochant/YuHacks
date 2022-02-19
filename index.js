@@ -1,9 +1,7 @@
 const http = require('http');
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
 const app = express();
-
 
 //Global vars
 global.id = 0;
@@ -11,7 +9,7 @@ global.meetings = [false,false,false,false];
 global.players = [];
 
 app.enable('trust-proxy');
-app.use(express.static(__dirname));
+
 //Use the session middleware
 app.use(session({
     name: 'YUhack',
@@ -34,26 +32,12 @@ app.use(express.json());
 
 app.listen(3000)
 
-//index
-app.get('/', function(req, res){
-    res.setHeader('Content-Type', 'text/html');
-    res.statusCode = 200;
-    res.sendFile('index.html', { root: path.join(__dirname, '') });
-});
-
-//games
-app.get('/games', function(req, res){
-    res.setHeader('Content-Type', 'text/html');
-    res.statusCode = 200;
-    res.sendFile('new_categories.html', { root: path.join(__dirname, '') });
-});
-
 app.get('/update', function(req,res) {
     if (session.username == null) {
         session.username = req.query.username;
     }
 
-    if (session.game == null) {
+    if (req.query.game != null) {
         session.game = req.query.game;
     }
 
@@ -62,8 +46,12 @@ app.get('/update', function(req,res) {
         session.id = id;
     }
 
-    const check = players.find(e => e.id == session.id);
-    if (!check) {
+    if (req.query.meetingid != null) {
+        session.meetingid = req.query.meetingid;
+    }
+
+    const check = players.findIndex(e => e.id == session.id);
+    if (check == -1) {
         //Player json response obj
         const player = {};
         player.id = session.id;
@@ -72,10 +60,12 @@ app.get('/update', function(req,res) {
         player.meetingid = session.meetingid;
         players.push(player);
     } else {
-        //DNE
+        players[check].game = session.game;
+        players[check].meetingid = session.meetingid;
     }
 
-    res.redirect(req.baseUrl+'/games');
+    res.setHeader('Content-Type', 'text/plain');
+    res.write('RECEIVED');
     res.end();
 });
 
@@ -99,3 +89,44 @@ app.get('/player', function(req,res) {
     res.write(JSON.stringify(player));
     res.end();
 });
+
+app.get('/search', function(req,res) {
+    for (let i = 0; i < players.length; i++) {
+        const check = players.findIndex(e => session.game == e.game && e.meetingid == null && e.id != session.id);
+
+        if (check == -1) {
+            //Not found
+            //Redirect to queue page
+        } else {
+            //Match
+            for (let j = 0; j < meetings.length; i++) {
+                if (!meetings[j]) {
+                    const self = players.findIndex(e=> session.id == e.id);
+                    
+                    //Update state in session and db
+                    session.meetingid = j;
+                    players[self].meetingid = j;
+
+                }
+                players[check].meetingid = j;
+            }
+        }
+    }
+
+    res.write('Dog');
+    res.end();
+});
+
+app.get('/check', function(req,res) {
+    const check = players.findIndex(e => session.id == e.id && e.meetingid != null);
+
+    if (check == -1) {
+        //Still in queue
+    } else {
+        //Found match
+        //Update session state
+        session.meetingid = players[check].meetingid;
+
+        //Redirect to chat
+    }
+})
