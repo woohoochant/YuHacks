@@ -14,6 +14,7 @@ const cors = require('cors');
 global.id = 0;
 global.meetings = [false,false,false,false];
 global.players = [];
+global.chatrooms = [];
 
 app.enable('trust-proxy');
 app.use(cors());
@@ -173,13 +174,21 @@ app.get('/search', function(req,res) {
                     session.meetingid = j;
                     players[self].meetingid = j;
 
+                    const new_chat = {};
+
+                    new_chat.meetingid = j;
+                    new_chat.player1 = session.id;
+                    new_chat.player2 = players[check].id;
+
+                    chatrooms.push(new_chat);
+
                 }
                 players[check].meetingid = j;
             }
         }
     }
 
-    res.write('Dog');
+    res.write('Searched');
     res.end();
 });
 
@@ -194,5 +203,19 @@ app.get('/check', function(req,res) {
         session.meetingid = players[check].meetingid;
 
         //Redirect to chat
+    }
+})
+
+app.get('/chatroom', function(req,res) {
+    check = chatrooms.findIndex(e => e.meetingid == req.query.meetingid);
+
+    if (check == -1) {
+        const new_room = {};
+
+        new_room.meetingid = req.query.meetingid;
+        
+
+    } else {
+
     }
 })
