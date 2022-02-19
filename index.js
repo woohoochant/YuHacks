@@ -170,7 +170,8 @@ app.get('/search', function(req,res) {
                 if (!meetings[j]) {
                     const self = players.findIndex(e=> session.id == e.id);
                     
-                    //Update state in session and db
+                    //Update state in session,db and meetings
+                    meeting[j] = true;
                     session.meetingid = j;
                     players[self].meetingid = j;
 
