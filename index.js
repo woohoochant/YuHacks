@@ -71,12 +71,13 @@ app.get('/games', function(req, res){
 app.get('/chat', function(req, res){
     const session = req.session;
     const id = req.query.id;
-    if (session.playerId != id) {
+    if (id && session.playerId != id) {
         res.redirect(req.baseUrl+'/');
         res.end();
     }
     else{
-        res.setHeader('Content-Type', 'text/html');
+        console.log('found chat');
+        // res.setHeader('Content-Type', 'text/html');
         res.statusCode = 200;
         res.sendFile('chat.html', { root: path.join(__dirname, '') });
     }
@@ -86,6 +87,7 @@ app.get('/update', function(req,res) {
     const session = req.session;
     if (session.username == null) {
         session.username = req.query.username;
+        console.log(req.query.username);
     }
 
     if (req.query.game != null) {
@@ -101,7 +103,7 @@ app.get('/update', function(req,res) {
         session.meetingid = req.query.meetingid;
     }
 
-    const check = players.findIndex(e => e.id == session.id);
+    const check = players.findIndex(e => e.id == session.playerId);
     if (check == -1) {
         //Player json response obj
         const player = {};
@@ -113,9 +115,14 @@ app.get('/update', function(req,res) {
     } else {
         players[check].game = session.game;
         players[check].meetingid = session.meetingid;
+        res.setHeader('Content-Type', 'application/json');
+        console.log(JSON.stringify(players[check]));
+        res.write(JSON.stringify(players[check]));
     }
 
-    //res.redirect(req.baseUrl+'/games');
+    if (session.game == null){
+        res.redirect(req.baseUrl+'/games');
+    }
     res.end();
 });
 
@@ -158,21 +165,22 @@ app.get('/player', function(req,res) {
 });
 
 app.get('/search', function(req,res) {
+    const session = req.session;
     for (let i = 0; i < players.length; i++) {
-        const check = players.findIndex(e => session.game == e.game && e.meetingid == null && e.id != session.id);
-
-        if (check == -1) {
-            //Not found
-            //Redirect to queue page
-        } else {
+        const check = players.findIndex(e => session.game == e.game && e.id != session.playerId);
+        console.log(check);
+        if (check != -1) {
             //Match
+            console.log('match');
             for (let j = 0; j < meetings.length; i++) {
                 if (!meetings[j]) {
-                    const self = players.findIndex(e=> session.id == e.id);
+                    const self = players.findIndex(e=> session.playerId == e.id);
                     
-                    //Update state in session and db
+                    //Update state in session,db and meetings
+                    meetings[j] = true;
                     session.meetingid = j;
                     players[self].meetingid = j;
+                    players[check].meetingid = j;
 
                     const new_chat = {};
 
@@ -181,28 +189,32 @@ app.get('/search', function(req,res) {
                     new_chat.player2 = players[check].id;
 
                     chatrooms.push(new_chat);
-
+                    res.redirect(req.baseUrl+'/chat?id='+players[self].id);
+                    return;
                 }
-                players[check].meetingid = j;
             }
         }
     }
-
-    res.write('Searched');
-    res.end();
+    res.redirect(req.baseUrl+'/chat');
 });
 
 app.get('/check', function(req,res) {
-    const check = players.findIndex(e => session.id == e.id && e.meetingid != null);
+    const session = req.session;
+    const check = players.findIndex(e => session.playerId == e.id && e.meetingid != null);
 
+    console.log('checking: ' +check);
     if (check == -1) {
         //Still in queue
+        res.end();
     } else {
         //Found match
         //Update session state
         session.meetingid = players[check].meetingid;
 
         //Redirect to chat
+        console.log(req.baseUrl+'/chat?id='+players[check].id);
+        res.write(JSON.stringify(players[check].id));
+        res.end();
     }
 })
 

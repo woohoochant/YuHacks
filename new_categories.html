@@ -12,13 +12,14 @@
       rel="stylesheet"
     />
     <title>Select a Game</title>
+    <script defer src="script.js"></script>
   </head>
   <body>
     <div class="main">
       <div class="row">
         <h1>Select a Game</h1>
         <div class="column">
-          <a href="#GTA5">
+          <a onclick="find(0)">
             <img
               src="https://static-cdn.jtvnw.net/ttv-boxart/32982_IGDB-188x250.jpg"
               alt="Grand Theft Auto 5"
@@ -28,7 +29,7 @@
           </a>
         </div>
         <div class="column">
-          <a href="#VALORANT">
+          <a onclick="find(1)">
             <img
               src="https://static-cdn.jtvnw.net/ttv-boxart/VALORANT-285x380.jpg"
               alt="Valorant"
@@ -38,34 +39,35 @@
           </a>
         </div>
         <div class="column">
-          <a href="#MC">
+          <a onclick="find(2)">
             <img
               src="https://static-cdn.jtvnw.net/ttv-boxart/27471_IGDB-188x250.jpg"
               alt="Minecraft"
               style="width: 100%"
+              onclick='find()'
             />
             <p>Minecraft</p>
           </a>
         </div>
         <div class="column">
-          <a href="#FORTNITE">
+          <div onclick="find(3)">
             <img
               src="https://static-cdn.jtvnw.net/ttv-boxart/33214-188x250.jpg"
               alt="Fortnite"
               style="width: 100%"
             />
             <p>Fortnite</p>
-          </a>
+          </div>
         </div>
         <div class="column">
-          <a href="#OW">
+          <div onclick="find(4)">
             <img
               src="https://static-cdn.jtvnw.net/ttv-boxart/Overwatch-285x380.jpg"
               alt="Overwatch"
               style="width: 100%"
             />
             <p>Overwatch</p>
-          </a>
+          </div>
         </div>
       </div>
     </div>

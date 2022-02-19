@@ -1,13 +1,18 @@
 const apiURL = window.location.origin;
 const socket = io('http://localhost:8080');
-const chat = document.querySelector('#chat-room');
+const chat = document.querySelector('#messages');
 const form = document.querySelector('#message-form');
 const message = document.querySelector('#message');
 
 var meetingId;
 
 window.onload = (event) => {
+    const endpoint = window.location.pathname;
     let playerId = getParameterByName('id');
+    if (endpoint == '/chat' && !playerId){
+        setInterval(checkStatus, 2500, playerId);
+    }
+    if (playerId != null) {
     fetch(apiURL + '/player?id=' + playerId)
         .then(
             function (response) {
@@ -27,6 +32,50 @@ window.onload = (event) => {
         .catch(function (err) {
             console.log('Fetch Error :-S', err);
         });
+    }
+}
+
+function checkStatus(id) {
+    console.log('update lobby');
+    $.get(apiURL + '/check', function (data, status) {
+        console.log(data);
+        if (data > 0){
+            navigate('chat?id='+data);
+        }
+    });
+}
+
+const images = document.querySelectorAll('img');
+let imgI = 0;
+if (images.length > 0){
+    images.array.forEach(element => {
+        element.addEventListener('click', function() {
+            find(imgI);
+            imgI++;
+        });
+    });
+}
+
+function find(val){
+    console.log('find');
+    fetch(apiURL + '/update?game=' + val)
+    .then(
+        function (response) {
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                alert('something went wrong');
+                return;
+            }
+            console.log(response);
+            response.json().then(json => {
+                navigate('search');
+            });
+        }
+    )
+    .catch(function (err) {
+        console.log('Fetch Error :-S', err);
+    });
 }
 
 function getParameterByName(name) {
