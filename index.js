@@ -8,6 +8,7 @@ const path = require('path');
 global.id = 0;
 global.meetings = [false,false,false,false];
 global.players = [];
+global.chatrooms = [];
 
 app.enable('trust-proxy');
 
@@ -89,6 +90,22 @@ app.get('/playerlist', function(req,res) {
 })
 
 app.get('/player', function(req,res) {
+
+    if (req.query.id != null) {
+        //Player json response obj
+        const check = players.findIndex(e => e.id == req.query.id);
+
+        let obj = {};
+        if (check == -1) {
+            //No match
+        } else {
+            obj = players[check];
+        }
+
+        res.setHeader('Content-Type', 'application/json');
+        res.write(JSON.stringify(obj));
+        res.end();
+    } else {
     //Player json response obj
     const player = {
 
@@ -101,6 +118,7 @@ app.get('/player', function(req,res) {
     res.setHeader('Content-Type', 'application/json');
     res.write(JSON.stringify(player));
     res.end();
+    }
 });
 
 app.get('/search', function(req,res) {
@@ -119,6 +137,14 @@ app.get('/search', function(req,res) {
                     //Update state in session and db
                     session.meetingid = j;
                     players[self].meetingid = j;
+
+                    const new_chat = {};
+
+                    new_chat.meetingid = j;
+                    new_chat.player1 = session.id;
+                    new_chat.player2 = players[check].id;
+
+                    chatrooms.push(new_chat);
 
                 }
                 players[check].meetingid = j;
@@ -141,5 +167,19 @@ app.get('/check', function(req,res) {
         session.meetingid = players[check].meetingid;
 
         //Redirect to chat
+    }
+})
+
+app.get('/chatroom', function(req,res) {
+    check = chatrooms.findIndex(e => e.meetingid == req.query.meetingid);
+
+    if (check == -1) {
+        const new_room = {};
+
+        new_room.meetingid = req.query.meetingid;
+        
+
+    } else {
+
     }
 })
