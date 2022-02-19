@@ -1,0 +1,29 @@
+body {
+  font-family: "Helvetica", sans-serif;
+  background: #000;
+  color: rgb(211, 211, 211);
+}
+
+.games {
+  text-align: center;
+  position: center;
+}
+
+.game {
+  position: center;
+  float: left;
+  width: 250px;
+  height: 150px;
+  vertical-align: auto;
+  left: 20%;
+  right: 20%;
+  text-align: center;
+}
+
+img {
+  float: left;
+  width: 212px;
+  height: 283px;
+  object-fit: cover;
+  text-align: center;
+}
